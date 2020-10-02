@@ -17,11 +17,15 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework_jwt.views import obtain_jwt_token
 from rest_framework_jwt.views import verify_jwt_token
-
+from api.views import PharmaViewSet, UserCreate, LoginView
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('api-token/', obtain_jwt_token),
-    path('', include('chart.urls'))
+    path('', include('chart.urls')),
+    path('users/', UserCreate.as_view(), name="user_create"),
+    path("login/", views.obtain_auth_token, name="login"),
+
 ]

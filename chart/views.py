@@ -15,12 +15,12 @@ def myFirstChart(request):
 
 # The `chartConfig` dict contains key-value pairs of data for chart attribute
   chartConfig = OrderedDict()
-  chartConfig["caption"] = "Pharmacie avec un service de qualité"
+  chartConfig["caption"] = "Hopitaux avec un service de qualité"
   chartConfig["subCaption"] = "En étoiles s=star"
-  chartConfig["xAxisName"] = "Pharmacies"
+  chartConfig["xAxisName"] = "Hopitaux"
   chartConfig["yAxisName"] = "Nombre d'étoiles (S)"
   chartConfig["numberSuffix"] = "S"
-  chartConfig["theme"] = "zune"
+  chartConfig["theme"] = "candy"
 
   dataSource["chart"] = chartConfig
   dataSource["data"] = []
@@ -35,7 +35,7 @@ def myFirstChart(request):
 
 # Create an object for the column 2D chart using the FusionCharts class constructor
 # The chart data is passed to the `dataSource` parameter.
-  column2D = FusionCharts("column2d", "myFirstChart", "600", "400", "myFirstchart-container", "json", dataSource)
-  return render(request, 'index.html', {
+  column2D = FusionCharts("column2d", "myFirstChart", "800", "500", "myFirstchart-container", "json", dataSource)
+  return render(request, 'chart.html', {
     'output': column2D.render()
 })
